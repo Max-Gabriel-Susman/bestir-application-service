@@ -3,7 +3,7 @@ package handler
 import (
 	"net/http"
 
-	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/account"
+	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/application"
 	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/foundation/database"
 	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/foundation/web"
 )
@@ -14,7 +14,7 @@ var _ http.Handler = (*web.App)(nil)
 func API(d Deps) *web.App {
 	app := web.NewApp()
 	dbrConn := database.NewDBR(d.DB)
-	accountAPI := account.NewAPI(account.NewMySQLStore(dbrConn))
-	AccountEndpoints(app, accountAPI)
+	applicationAPI := application.NewAPI(application.NewMySQLStore(dbrConn))
+	ApplicationEndpoints(app, applicationAPI)
 	return app
 }

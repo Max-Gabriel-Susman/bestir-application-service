@@ -10,7 +10,7 @@ import (
 	"github.com/ettle/strcase"
 	"github.com/go-playground/validator/v10"
 
-	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/foundation/bestirerror"
+	"github.com/Max-Gabriel-Susman/bestir-application-service/internal/foundation/bestirerror"
 )
 
 var (

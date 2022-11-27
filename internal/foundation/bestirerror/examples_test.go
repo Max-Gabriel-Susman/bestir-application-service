@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/foundation/bestirerror"
+	"github.com/Max-Gabriel-Susman/bestir-application-service/internal/foundation/bestirerror"
 )
 
 func describe(err error) {

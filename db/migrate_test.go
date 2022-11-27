@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"testing"
 
-	migrate "github.com/Max-Gabriel-Susman/bestir-identity-service/db"
+	migrate "github.com/Max-Gabriel-Susman/bestir-application-service/db"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/google/go-cmp/cmp"
 	"github.com/ory/dockertest"

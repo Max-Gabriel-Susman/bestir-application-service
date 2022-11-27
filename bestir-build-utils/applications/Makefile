@@ -62,25 +62,25 @@ local-env-up: local-db-up local-db-migrate local-build-up local-test
 local-env-down: local-build-down local-db-down 
 
 local-stop:
-	docker kill identity
+	docker kill application
 
 local-start:
-	docker run --name identity -d \
+	docker run --name application -d \
 		--network=bridge --rm \
 		-e MYSQL_USER=usr \
-		-e MYSQL_PASSWORD=identity \
-		-e MYSQL_DATABASE=identity \
+		-e MYSQL_PASSWORD=application \
+		-e MYSQL_DATABASE=application \
 		-e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
 		-p 3306:3306 mysql
 
 	DD_DISABLE=true \
 		API_ADDRESS=0.0.0.0:8080 \
-		IDENTITY_DB_USER=usr \
-		IDENTITY_DB_PASSWORD=identity \
-		IDENTITY_DB_HOST=127.0.0.1 \
-		IDENTITY_DB_NAME=identity \
-		IDENTITY_DB_PORT=3306 \
+		APPLICATION_DB_USER=usr \
+		APPLICATION_DB_PASSWORD=application \
+		APPLICATION_DB_HOST=127.0.0.1 \
+		APPLICATION_DB_NAME=application \
+		APPLICATION_DB_PORT=3306 \
 		ENABLE_MIGRATE=true \
-		go run ./cmd/bestir-identity-service/
+		go run ./cmd/bestir-application-service/
 
 local-restart: local-stop local-start

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/application"
-	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/foundation/web"
+	"github.com/Max-Gabriel-Susman/bestir-application-service/internal/application"
+	"github.com/Max-Gabriel-Susman/bestir-application-service/internal/foundation/web"
 	"github.com/go-chi/chi/v5"
 )
 

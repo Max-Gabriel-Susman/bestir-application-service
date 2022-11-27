@@ -5,7 +5,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/foundation/bestirerror"
+	"github.com/Max-Gabriel-Susman/bestir-application-service/internal/foundation/bestirerror"
 	"github.com/go-sql-driver/mysql"
 	"github.com/gocraft/dbr/v2"
 )

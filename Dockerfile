@@ -6,7 +6,7 @@
 # you know what, fuck it, I can play around with that shit later
 FROM golang:1.16-alpine
 
-ARG PROJECT_BINARY=bestir-identity-service
+ARG PROJECT_BINARY=bestir-application-service
 ARG PROJECT_BUILD_DIR=./build/bin
 
 WORKDIR /app
@@ -19,17 +19,17 @@ RUN go mod download
 
 # these are previous failed attempts to copy subdirectories of the working directory of docker invocation into the working 
 # directory of 
-# COPY *.go ./cmd/bestir-identity-service
+# COPY *.go ./cmd/bestir-application-service
 # COPY *.go ./internal/
-# cmd/bestir-identity-service
+# cmd/bestir-application-service
 
 # temporary measure
 COPY *.go ./
 
-RUN go build -o /bestir-identity-service
+RUN go build -o /bestir-application-service
 
 EXPOSE 8080
 
- CMD [ "/bestir-identity-service" ]
+ CMD [ "/bestir-application-service" ]
 
  

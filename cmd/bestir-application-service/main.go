@@ -8,9 +8,8 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/Max-Gabriel-Susman/bestir-identity-service/db"
-	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/foundation/database"
-	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/handler"
+	"github.com/Max-Gabriel-Susman/bestir-application-service/internal/foundation/database"
+	"github.com/Max-Gabriel-Susman/bestir-application-service/internal/handler"
 	env "github.com/caarlos0/env/v6"
 	"github.com/pkg/errors"
 
@@ -30,10 +29,6 @@ const (
 	exitCodeErr       = 1
 	exitCodeInterrupt = 2
 )
-
-func spain() {
-	db.InitializeDB()
-}
 
 func main() {
 	ctx := context.Background()
@@ -76,15 +71,15 @@ func run(ctx context.Context, _ []string) error {
 
 	// cfg and setup shit right hurr, we gotta alter it for my database setup
 	var cfg struct {
-		ServiceName string `env:"SERVICE_NAME" envDefault:"bp-billing-service"`
+		ServiceName string `env:"SERVICE_NAME" envDefault:"bestir-application-service"`
 		Env         string `env:"ENV" envDefault:"local"`
 		Database    struct {
-			User   string `env:"IDENTITY_DB_USER,required"`
-			Pass   string `env:"IDENTITY_DB_PASSWORD,required"`
-			Host   string `env:"IDENTITY_DB_HOST"`
-			Port   string `env:"IDENTITY_DB_PORT" envDefault:"3306"`
-			DBName string `env:"IDENTITY_DB_Name" envDefault:"identity"`
-			Params string `env:"IDENTITY_DB_Param_Overrides" envDefault:"parseTime=true"`
+			User   string `env:"APPLICATION_DB_USER,required"`
+			Pass   string `env:"APPLICATION_DB_PASSWORD,required"`
+			Host   string `env:"APPLICATION_DB_HOST"`
+			Port   string `env:"APPLICATION_DB_PORT" envDefault:"3306"`
+			DBName string `env:"APPLICATION_DB_Name" envDefault:"application"`
+			Params string `env:"APPLICATION_DB_Param_Overrides" envDefault:"parseTime=true"`
 		}
 		Datadog struct {
 			Disable bool `env:"DD_DISABLE"`

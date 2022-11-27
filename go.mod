@@ -1,4 +1,4 @@
-module github.com/Max-Gabriel-Susman/bestir-identity-service
+module github.com/Max-Gabriel-Susman/bestir-application-service
 
 go 1.17
 

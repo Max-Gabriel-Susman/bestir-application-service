@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/Max-Gabriel-Susman/bestir-identity-service/internal/foundation/database"
+	"github.com/Max-Gabriel-Susman/bestir-application-service/internal/foundation/database"
 	"github.com/gocraft/dbr/v2"
 )
 

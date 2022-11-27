@@ -51,3 +51,21 @@ func (s *MySQLStorage) CreateApplication(ctx context.Context, application Applic
 		ExecContext(ctx)
 	return database.ClassifyError(err)
 }
+
+func (s *MySQLStorage) DeleteApplication(ctx context.Context, application Application) error {
+	fmt.Println("Create Account C invoked")
+	_, err := s.sess.InsertInto(applicationTable.Name).
+		Columns(applicationTable.Columns...).
+		Record(application).
+		ExecContext(ctx)
+	return database.ClassifyError(err)
+}
+
+func (s *MySQLStorage) UpdateApplication(ctx context.Context, application Application) error {
+	fmt.Println("Create Account C invoked")
+	_, err := s.sess.InsertInto(applicationTable.Name).
+		Columns(applicationTable.Columns...).
+		Record(application).
+		ExecContext(ctx)
+	return database.ClassifyError(err)
+}

@@ -26,9 +26,11 @@ type ListApplicationsResponse struct {
 func ApplicationEndpoints(app *web.App, api *application.API) {
 	ag := applicationGroup{API: api}
 
-	// app.Handle("GET", "/application", ag.GetApplication)
+	app.Handle("GET", "/application/{id}", ag.GetApplication)
 	app.Handle("GET", "/application", ag.ListApplications)
 	app.Handle("POST", "/application", ag.CreateApplication)
+	app.Handle("DELETE", "/application/{id}", ag.CreateApplication)
+	app.Handle("PUT", "/application/{id}", ag.CreateApplication)
 }
 
 func (ag applicationGroup) ListApplications(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
@@ -76,4 +78,34 @@ func (ag applicationGroup) GetApplication(ctx context.Context, w http.ResponseWr
 	}
 
 	return nil
+}
+
+func (ag applicationGroup) UpdateApplication(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
+	fmt.Println("Create Account a invoked")
+	var input application.IncomingApplication
+	if err := web.Decode(r.Body, &input); err != nil {
+		return err
+	}
+
+	application, err := ag.API.UpdateApplication(ctx, input)
+	if err != nil {
+		return err
+	}
+
+	return web.Respond(ctx, w, application, http.StatusCreated)
+}
+
+func (ag applicationGroup) DeleteApplication(ctx context.Context, w http.ResponseWriter, r *http.Request) error {
+	fmt.Println("Create Account a invoked")
+	var input application.IncomingApplication
+	if err := web.Decode(r.Body, &input); err != nil {
+		return err
+	}
+
+	application, err := ag.API.DeleteApplication(ctx, input)
+	if err != nil {
+		return err
+	}
+
+	return web.Respond(ctx, w, application, http.StatusCreated)
 }

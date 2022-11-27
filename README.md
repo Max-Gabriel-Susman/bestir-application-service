@@ -1,10 +1,10 @@
-# Bestir Identity Service 
+# Bestir Application Service 
 
-Handles the lifecycle of accounts on the bestir network
+Handles the lifecycle of applications on the bestir network
 
 ### Roadmap 
 
-Let's start w/ rudimentary account creation and management, testing for that logic, I'll build the service to be production grade and then scale up operations from there
+Let's start w/ rudimentary application creation and management, testing for that logic, I'll build the service to be production grade and then scale up operations from there
 
 to get the bestir platform working with the unreal game templates I think we're going to initially just need an identity, permissions, and applicaton(game creation and management) service
 

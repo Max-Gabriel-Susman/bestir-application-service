@@ -64,7 +64,7 @@ local-env-down: local-build-down local-db-down
 local-stop:
 	docker kill application
 
-local-start:
+local-start-with-db:
 	docker run --name application -d \
 		--network=bridge --rm \
 		-e MYSQL_USER=usr \
@@ -75,6 +75,18 @@ local-start:
 
 	DD_DISABLE=true \
 		API_ADDRESS=0.0.0.0:8080 \
+		APPLICATION_DB_USER=usr \
+		APPLICATION_DB_PASSWORD=application \
+		APPLICATION_DB_HOST=127.0.0.1 \
+		APPLICATION_DB_NAME=application \
+		APPLICATION_DB_PORT=3306 \
+		ENABLE_MIGRATE=true \
+		go run ./cmd/bestir-application-service/
+
+
+local-start:
+	DD_DISABLE=true \
+		API_ADDRESS=0.0.0.0:8081 \
 		APPLICATION_DB_USER=usr \
 		APPLICATION_DB_PASSWORD=application \
 		APPLICATION_DB_HOST=127.0.0.1 \
